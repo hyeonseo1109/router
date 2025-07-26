@@ -37,7 +37,7 @@ export default function SwiperImage() {
 
                 {cards.map((card) => (
                     <SwiperSlide>
-                        <Link href={`/detail/${card.id}`} className='bg-[red]  w-[20em] h-[10em] max-w-[20em] min-w-[20em]'>{<img src={card.image} />}</Link>
+                        <Link href={`/detail/${card.id}`} className='w-[20em] h-[10em] max-w-[20em] min-w-[20em]'>{<img src={card.image} />}</Link>
                     </SwiperSlide>))}
             </Swiper>
         </>

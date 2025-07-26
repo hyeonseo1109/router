@@ -6,3 +6,13 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+
+.swiper-scrollbar {
+  height: 0.6em !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5em !important; /* 아이콘 크기 */
+  color: rgba(0, 0, 0, 0.525) !important; /* 색상 변경 */
+}
