@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-scrollbar {
@@ -15,4 +15,18 @@
 .swiper-button-prev::after {
   font-size: 1.5em !important; /* 아이콘 크기 */
   color: rgba(0, 0, 0, 0.525) !important; /* 색상 변경 */
+}
+
+.background {
+  background: linear-gradient(45deg, rgb(29, 29, 123), rgb(96, 96, 86));
+  background-repeat: no-repeat;
+}
+
+/* .section {
+  width: 100%;
+} */
+
+nav {
+  width: 20%;
+  /* height: 100%; */
 }

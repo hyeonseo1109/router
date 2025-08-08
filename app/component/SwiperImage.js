@@ -17,9 +17,9 @@ export default function SwiperImage() {
     }, []);
 
     return (
-        <>
+        <div className='w-[20rem] h-[10rem]'>
             <Swiper
-                className='w-[20em] h-[10em]'
+                className='w-[20rem] h-[10rem]'
                 modules={[Navigation, Scrollbar, Autoplay]}
                 spaceBetween={200}
                 slidesPerView={1}
@@ -37,10 +37,10 @@ export default function SwiperImage() {
 
                 {cards.map((card) => (
                     <SwiperSlide>
-                        <Link href={`/detail/${card.id}`} className='w-[20em] h-[10em] max-w-[20em] min-w-[20em]'>{<img src={card.image} />}</Link>
+                        <Link href={`/detail/${card.id}`} className='w-[20rem] h-[10rem] max-w-[20rem] min-w-[20rem]'>{<img src={card.image} />}</Link>
                     </SwiperSlide>))}
             </Swiper>
-        </>
+        </div>
     );
 }
 

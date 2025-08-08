@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <section className="flex">
-        <ShoppingCategory/>
         <SwiperImage/>
+        <ShoppingCategory/>
       </section>
     </>
   );
