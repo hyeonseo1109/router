@@ -7,6 +7,13 @@
   height: 100%;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .swiper-scrollbar {
   height: 0.6em !important;
 }
@@ -20,6 +27,11 @@
 .background {
   background: linear-gradient(45deg, rgb(29, 29, 123), rgb(96, 96, 86));
   background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
 }
 
 /* .section {

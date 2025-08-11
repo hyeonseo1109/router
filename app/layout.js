@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
+import MenuBar from "./component/MenuBar";
 
 export const metadata = {
   title: "Hyang",
@@ -9,10 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ko">
-      <body className="background flex flex-col py-5 gap-2">
+    <html lang="ko" className="background">
+      <body className="flex flex-col gap-2">
 
-        <nav className="flex justify-between bg-[#1c1c2b] rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
+        <nav className="flex justify-between bg-[#1c1c2b] my-5 rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
           <div className="flex gap-5 items-center">
             <Link href="/" className="text-[1.2rem]">한지공방 한지향</Link>
             <Link href="/about">공방소개</Link>
@@ -25,11 +26,12 @@ export default function RootLayout({ children }) {
             <Link href="/signup">회원가입</Link>
           </div>
         </nav>
+        <MenuBar />
+        
 
         <div className="bg-[#000] mx-5 p-3 rounded-lg">
           {children}
         </div>
-
       </body>
     </html>
   );
