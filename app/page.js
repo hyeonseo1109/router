@@ -8,7 +8,7 @@ import SwiperImage from "./component/SwiperImage";
 export default function Home() {
   return (
     <>
-      <section className="flex">
+      <section className="flex max-[900px]:flex-col">
         <SwiperImage/>
         <ShoppingCategory/>
       </section>
