@@ -4,7 +4,6 @@ import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { useMenuBar } from "../store/useImageStore";
 import MenuBar from "./MenuBar";
-import { useEffect } from "react";
 
 
 
@@ -18,6 +17,7 @@ export default function NavBar () {
               <Link href="/lamp">한지조명</Link>
               <Link href="/student">수강생모집</Link>
               <Link href="/gallery">갤러리</Link>
+              <Link href="/notice">소식</Link>
             </div>
             <div className="flex gap-6 items-center">
               <div className="flex gap-6 items-center">

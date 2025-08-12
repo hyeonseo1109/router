@@ -10,6 +10,16 @@ export const useImageStore = create((set) => ({
     },
 }));
 
+export const useNoticeStore = create((set) => ({
+    notice: [],
+    setNotice: (notice) => set({notice}),
+    fetchNotice: async () => {
+        const res = await fetch("/api/notice");
+        const data = await res.json();
+        set({ notice: data });
+    },
+}));
+
 export const useMenuBar = create((set) => ({
     menuBar: false,
     setMenuBar: (menuBar) => set({menuBar}),
