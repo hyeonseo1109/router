@@ -9,3 +9,8 @@ export const useImageStore = create((set) => ({
         set({ cards: data });
     },
 }));
+
+export const useMenuBar = create((set) => ({
+    menuBar: false,
+    setMenuBar: (menu) => set({menu}),
+}));
