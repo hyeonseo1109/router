@@ -4,6 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
 import { useMenuBar } from "../store/useImageStore";
 import MenuBar from "./MenuBar";
+import { useEffect } from "react";
 
 
 
@@ -23,7 +24,10 @@ export default function NavBar () {
                 <Link href="/signin">로그인</Link>
                 <Link href="/signup">회원가입</Link>
               </div>
-            <IoMenu onClick={setMenuBar(p => !p)}/>
+            <IoMenu onClick={() => {
+              setMenuBar(true)
+              console.log("메롱")
+              }}/>
             </div>
           </nav>
           <MenuBar />

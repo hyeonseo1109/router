@@ -12,5 +12,5 @@ export const useImageStore = create((set) => ({
 
 export const useMenuBar = create((set) => ({
     menuBar: false,
-    setMenuBar: (menu) => set({menu}),
+    setMenuBar: (menuBar) => set({menuBar}),
 }));

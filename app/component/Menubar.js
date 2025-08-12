@@ -3,13 +3,21 @@
 
 import Link from "next/link";
 import { useMenuBar } from "../store/useImageStore";
+import { VscChromeClose } from "react-icons/vsc";
 
 export default function MenuBar () {
   const menuBar = useMenuBar((state) => state.menuBar)
+  const setMenuBar = useMenuBar( (state) => state.setMenuBar)
+
   return (<>
   { menuBar &&
-    <div className="bg-[#ffffff77] w-[12rem] min-h-screen fixed justify-end right-0 top-0 bottom-0 z-20">
+    <div className="bg-[#ffffffdd] w-[12rem] min-h-screen fixed justify-end right-0 top-0 bottom-0 z-20">
       <div className="flex flex-col w-full items-center justify-around h-full text-sm">
+        <VscChromeClose 
+          className="fixed right-0 top-0 m-2"
+          onClick={() => setMenuBar(false)}
+        />
+        
         <div className="flex flex-col w-full items-center gap-5">
           <div className="flex flex-col w-full items-center gap-5">
             <div className="text-[1.2rem] font-bold">한지공방 한지향</div>
@@ -17,7 +25,7 @@ export default function MenuBar () {
             <Link href="/signup">회원가입</Link>
           </div>
           <div className="flex flex-col w-full items-center gap-5">
-            <div className="bg-[#373737] w-full h-0.5"></div>
+            <div className="bg-[#c9c9c9] w-full h-0.5"></div>
             <Link href="/about">공방소개</Link>
             <Link href="/lamp">한지조명</Link>
             <Link href="/student">수강생모집</Link>
