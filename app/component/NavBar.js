@@ -11,7 +11,7 @@ export default function NavBar () {
   const setMenuBar = useMenuBar( (state) => state.setMenuBar)
   return ( <>
     <nav className="flex justify-between bg-[#1c1c2b] my-5 rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
-            <div className="flex gap-6 items-center">
+            <div className="flex gap-6 items-center max880:hidden">
               <Link href="/" className="text-[1.2rem]">한지공방 한지향</Link>
               <Link href="/about">공방소개</Link>
               <Link href="/lamp">한지조명</Link>
@@ -20,14 +20,17 @@ export default function NavBar () {
               <Link href="/notice">소식</Link>
             </div>
             <div className="flex gap-6 items-center">
-              <div className="flex gap-6 items-center">
+              <div className="flex gap-6 items-center max880:hidden">
                 <Link href="/signin">로그인</Link>
                 <Link href="/signup">회원가입</Link>
               </div>
-            <IoMenu onClick={() => {
-              setMenuBar(true)
-              console.log("메롱")
-              }}/>
+              <div className="flex justify-end w-full">
+                <IoMenu 
+                  onClick={() => {
+                    setMenuBar(true)
+                    console.log("메롱")
+                  }}/>
+              </div>
             </div>
           </nav>
           <MenuBar />
