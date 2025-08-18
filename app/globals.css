@@ -44,8 +44,11 @@ nav {
   /* height: 100%; */
 }
 
-/* @media (max-width: 930px) {
+@media (max-width: 930px) {
   section {
     flex-direction: column;
   }
-} */
+  /* .swiperImage {
+    font-size: 17px;
+  } */
+}

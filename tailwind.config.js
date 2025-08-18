@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       screens: {
-      'max880': { 'max': '880px' }, 
+      'max930': { 'max': '930px' }, 
     },
     },
   },
