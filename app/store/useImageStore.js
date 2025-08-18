@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { create } from "zustand";
 
 export const useImageStore = create((set) => ({
@@ -24,3 +25,20 @@ export const useMenuBar = create((set) => ({
     menuBar: false,
     setMenuBar: (menuBar) => set({menuBar}),
 }));
+
+export const useAuthStore = create((set) => ({
+    user: null,
+    isLogined: false,
+    setUser: (user)=> set({user, isLogined: !!user })
+}));
+
+export function useAuthListener() {
+    const setUser = useAuthStore((state) => state.setUser);
+
+    useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+    });
+    return () => unsubscribe();
+    }, [setUser]);
+}
