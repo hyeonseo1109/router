@@ -25,7 +25,7 @@ export default function () {
         <Link 
           key={nt.id}
           href={`/announce/${nt.id}`}
-          className={`${Number(nt.id)%2===0 ? 'bg-[#282828]': 'bg-[#343434]'}`}
+          className={`p-1 rounded-md ${Number(nt.id)%2===0 ? 'bg-[#282828]': 'bg-[#343434]'}`}
         >
           {nt.title}
         </Link>
