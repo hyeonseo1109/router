@@ -27,9 +27,9 @@ export default function Announce ({params}) {
 
   return (<div>
     <VscArrowLeft onClick={() => router.back()}/>
-    <div className="flex flex-col items-center gap-5 py-5">
-      <p>{nt.title}</p>
-      <p>{nt.description}</p>
+    <div className="flex flex-col items-center gap-5 py-5 px-3">
+      <p className="bg-[#3e3e3e] px-5 text-[1.1rem] rounded-md">{nt.title}</p>
+      <p className="w-full break-words whitespace-pre-line">{nt.description}</p>
       {nt.image && <img src={nt.image}/>}
     </div>
   </div>)
