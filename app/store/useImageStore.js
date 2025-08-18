@@ -32,14 +32,18 @@ export const useAuthStore = create((set) => ({
     user: null,
     isLogined: false,
     setUser: (user)=> set({user, isLogined: !!user }),
-  
+    signupError: null,
+    loginError: null,
+    setSignupError: (signupError)=>set({signupError}),
+    setLoginError: (loginError)=>set({loginError}),
     logout: async () => {
       try {
         await signOut(auth);
-        set({user: null, isLogined: false});
+        set({user: null, isLogined: false, signupError: null });
         console.log("로그아웃");
       } catch (e) {
         console.error("로그아웃 실패:", e)
+        set({ signupError: e.message }); 
       }
     }
   
