@@ -30,7 +30,7 @@ export default function Announce ({params}) {
     <div className="flex flex-col items-center gap-5 py-5">
       <p>{nt.title}</p>
       <p>{nt.description}</p>
-      {nt.image && <image src={nt.image}/>}
+      {nt.image && <img src={nt.image}/>}
     </div>
   </div>)
 }
