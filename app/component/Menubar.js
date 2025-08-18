@@ -2,12 +2,14 @@
 
 
 import Link from "next/link";
-import { useMenuBar } from "../store/useImageStore";
+import { useAuthStore, useMenuBar } from "../store/useImageStore";
 import { VscChromeClose } from "react-icons/vsc";
 
 export default function MenuBar () {
   const menuBar = useMenuBar((state) => state.menuBar)
   const setMenuBar = useMenuBar( (state) => state.setMenuBar)
+  const isLogined = useAuthStore((s)=>s.isLogined)
+
 
   return (<>
   { menuBar &&
@@ -21,8 +23,10 @@ export default function MenuBar () {
         <div className="flex flex-col w-full items-center gap-5">
           <div className="flex flex-col w-full items-center gap-5">
             <div className="text-[1.2rem] font-bold">한지공방 한지향</div>
-            <Link href="/signin">로그인</Link>
-            <Link href="/signup">회원가입</Link>
+            {isLogined ? null : <div className="flex flex-col items-center gap-5">
+              <Link href="/signin">로그인</Link>
+              <Link href="/signup">회원가입</Link>
+            </div>}
           </div>
           <div className="flex flex-col w-full items-center gap-5">
             <div className="bg-[#3f3f7d] w-full h-0.5"></div>

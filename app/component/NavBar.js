@@ -2,14 +2,18 @@
 
 import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
-import { useAuthStore, useMenuBar } from "../store/useImageStore";
+import { useAuthListener, useAuthStore, useMenuBar } from "../store/useImageStore";
 import MenuBar from "./MenuBar";
+import { useEffect } from "react";
 
 
 
 export default function NavBar () {
   const setMenuBar = useMenuBar( (state) => state.setMenuBar)
   const isLogined = useAuthStore((s)=>s.isLogined)
+
+  useAuthListener();
+
   return ( <>
     <nav className="flex justify-between bg-[#1c1c2b] my-5 rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
             <div className="flex gap-6 items-center">

@@ -1,3 +1,5 @@
+import { auth } from "@/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { create } from "zustand";
 
