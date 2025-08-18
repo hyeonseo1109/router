@@ -13,6 +13,7 @@ module.exports = {
       },
       screens: {
       'max930': { 'max': '930px' }, 
+      'max1200': { 'max': '1200px' }, 
     },
     },
   },
