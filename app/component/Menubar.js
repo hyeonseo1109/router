@@ -23,7 +23,11 @@ export default function MenuBar () {
         <div className="flex flex-col w-full items-center gap-5">
           <div className="flex flex-col w-full items-center gap-5">
             <div className="text-[1.2rem] font-bold">한지공방 한지향</div>
-            {isLogined ? null : <div className="flex flex-col items-center gap-5">
+            {isLogined ? <>
+              <Link href="/mypage">마이페이지</Link>
+              <button>로그아웃</button>
+              </>
+              : <div className="flex flex-col items-center gap-5">
               <Link href="/signin">로그인</Link>
               <Link href="/signup">회원가입</Link>
             </div>}

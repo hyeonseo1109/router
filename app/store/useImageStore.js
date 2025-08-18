@@ -1,5 +1,5 @@
 import { auth } from "@/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { create } from "zustand";
 
@@ -31,7 +31,18 @@ export const useMenuBar = create((set) => ({
 export const useAuthStore = create((set) => ({
     user: null,
     isLogined: false,
-    setUser: (user)=> set({user, isLogined: !!user })
+    setUser: (user)=> set({user, isLogined: !!user }),
+  
+    logout: async () => {
+      try {
+        await signOut(auth);
+        set({user: null, isLogined: false});
+        console.log("로그아웃");
+      } catch (e) {
+        console.error("로그아웃 실패:", e)
+      }
+    }
+  
 }));
 
 export function useAuthListener() {
