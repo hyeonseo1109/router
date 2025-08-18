@@ -5,7 +5,7 @@ export default function ShoppingCategory () {
         <>
             <div className="bg-black w-[100%] h-[21rem] flex flex-col">
                 <p className="text-white m-2">SHOPPING CATEGORY</p>
-                <div className="flex flex-row h-full justify-around">
+                <div className="flex flex-row h-full justify-around mx-5">
                     <section className="flex flex-col justify-between">
                         <Link
                             href="/hanjiProduct"
