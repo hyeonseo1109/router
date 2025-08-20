@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fast-xml-parser": "^5.2.5",
     "firebase": "^12.1.0",
     "next": "14.2.30",
     "react": "^18",
