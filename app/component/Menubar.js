@@ -13,7 +13,7 @@ export default function MenuBar () {
 
   return (<>
   { menuBar &&
-    <div className="bg-[#2d2d60ee] w-[12rem] min-h-screen fixed justify-end right-0 top-0 bottom-0 z-20 text-white">
+    <div className="bg-[#2d2d60ee] w-[12rem] min-h-screen fixed justify-end right-0 top-0 bottom-0 z-20 text-white ">
       <div className="flex flex-col w-full items-center justify-around h-full text-sm">
         <VscChromeClose 
           className="fixed right-0 top-0 m-2"
