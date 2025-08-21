@@ -32,11 +32,10 @@ export default function About () {
                             <div className="text-[1.2rem]">{it.title}</div>
                             {it.description.indexOf("<img")!==-1 ? <>
                             <img 
-                                src={`/api/image-proxy?url=${encodeURIComponent(it.description.split('src="')[1].split('"')[0].trim())}`}
+                                src={`/api/image-proxy?url=${encodeURIComponent(it.description.split('src="')[1].split('"')[0].trim().replace('blogthumb', 'postfiles')+"?type=w966")}`}
                                 alt="블로그 이미지"
                                 // className="object-contain w-full"
                                 // className="aspect-auto h-[20rem]"
-                                style={{ height: '30rem', width: 'auto', display: 'block', margin: '0 auto' }}
                                 />
                             <div>{it.description.split('<img')[0]}</div>
                             {/*

@@ -15,6 +15,8 @@ export async function GET(request) {
 
     const contentType = imageRes.headers.get("content-type") || "image/jpeg";
     const buffer = await imageRes.arrayBuffer();
+    const decodedUrl = decodeURIComponent(url);
+    console.log("Fetching image from:", decodedUrl);  
 
     return new Response(buffer, {
       headers: {
