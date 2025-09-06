@@ -7,7 +7,14 @@ export async function GET(request) {
   }
 
   try {
-    const imageRes = await fetch(url);
+    // const imageRes = await fetch(url);
+    const decodedUrl = decodeURIComponent(url);
+    const imageRes = await fetch(decodedUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Referer': 'https://m.blog.naver.com',
+      },
+    });
     
     if (!imageRes.ok) {
       return new Response("Failed to fetch image", { status: 500 });
@@ -15,8 +22,8 @@ export async function GET(request) {
 
     const contentType = imageRes.headers.get("content-type") || "image/jpeg";
     const buffer = await imageRes.arrayBuffer();
-    const decodedUrl = decodeURIComponent(url);
-    console.log("Fetching image from:", decodedUrl);  
+    // const decodedUrl = decodeURIComponent(url);
+    // console.log("Fetching image from:", decodedUrl);  
 
     return new Response(buffer, {
       headers: {

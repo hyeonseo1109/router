@@ -9,7 +9,7 @@ export default function MyPage () {
 
 
   useAuthListener();
-  
+  console.log(user);
 
   return (
     <>
