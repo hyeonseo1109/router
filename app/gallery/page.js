@@ -41,7 +41,6 @@ export default function About () {
                             {/*
                             ---이미지 비율 이상함
 
-
                             https://blogthumb.pstatic.net/MjAxOTA1MDlfMjUz/MDAxNTU3NDA4Nzc1ODU0.a-izj2xFy4Tn5lgRYYuSGmTCCWlawQy5ToD92hof2iUg.tZR68GMtpAXPzQ36ncFVQx_td8qPfoBYAuDlBSBN8aYg.JPEG.gbhyang/경인_평화22.jpg
                             에서 blogthumb를 postfiles로 대치, 
                             맨 뒤에 ?type=w966 붙이기
