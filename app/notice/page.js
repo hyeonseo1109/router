@@ -1,50 +1,57 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from "react"
-import { useNoticeStore } from "../store/useImageStore"
+import { useEffect, useState } from "react";
+import { db } from "@/firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import Link from "next/link";
-import { VscArrowLeft } from "react-icons/vsc";
-import { VscArrowRight } from "react-icons/vsc";
 
-export default function () {
-  
-  const fetchNotice = useNoticeStore((state) => state.fetchNotice)
-  const notice = useNoticeStore((state) => state.notice)
-  useEffect( () => {
-    fetchNotice()
-  }, [fetchNotice])
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(notice.length / 5);
-  const currentNotice = notice.slice(
-    (currentPage -1) *5, currentPage*5
-  )
-  return (<div className="flex flex-col gap-5">
-    <span>공지사항</span>
-    <div className="flex flex-col gap-2">
-      {currentNotice.map((nt)=> (
-        <Link 
-          key={nt.id}
-          href={`/announce/${nt.id}`}
-          className={`p-1 rounded-md ${Number(nt.id)%2===0 ? 'bg-[#282828]': 'bg-[#343434]'}`}
-        >
-          {nt.title}
-        </Link>
-      ))}
-    </div>
-    <div className="flex justify-between w-full mt-5 mb-2">
-      <VscArrowLeft 
-        disabled={currentPage === 1}
-        onClick={()=> setCurrentPage(currentPage-1)}
-        className={`${currentPage===1 && 'opacity-30 pointer-events-none'}`}
-      />
-      <span className="text-sm text-gray-400">
-          {currentPage} / {totalPages}
-        </span>
-      <VscArrowRight 
-        onClick={() => setCurrentPage(currentPage + 1)}
-        className={`${currentPage===totalPages && 'opacity-30 pointer-events-none'}`}
-      />
-    </div>
+export default function Notice() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  </div>)
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    const q = query(collection(db, "posts"), where("category", "==", "news"));
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    // 최신순 정렬
+    data.sort((a, b) => {
+      if (!a.createdAt || !b.createdAt) return 0;
+      return b.createdAt.seconds - a.createdAt.seconds;
+    });
+
+    setPosts(data);
+    setLoading(false);
+  };
+
+  if (loading) return <div>로딩 중...</div>;
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-5">소식</h1>
+
+      {posts.length > 0 ? (
+        <div className="flex flex-col gap-2">
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/notice/${post.id}`}
+              className="p-3 rounded-md bg-[#282828] hover:bg-[#343434]"
+            >
+              {post.title}
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-400 py-10">목록이 없습니다.</div>
+      )}
+    </div>
+  );
 }

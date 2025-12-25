@@ -1,62 +1,68 @@
-'use client';
+"use client";
 
-import { useEffect } from "react";
-import { useBlog } from "../store/useImageStore";
+import { useEffect, useState } from "react";
+import { db } from "@/firebase";
+import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
+import Link from "next/link";
 
-export default function About () {
-    const blogContent = useBlog((s) => s.blogContent)
-    const fetchBlogContent = useBlog((s) => s.fetchBlogContent);
+export default function Gallery() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetchBlogContent();
-    }, []);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
-    const items = blogContent?.item ?? [];
+  const fetchPosts = async () => {
+    const q = query(
+      collection(db, "posts"),
+      where("category", "==", "gallery"),
+      orderBy("createdAt", "desc")
+    );
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setPosts(data);
+    setLoading(false);
+  };
 
-    const bordItems = items.filter((item)=>item.category ==='갤러리')
-    if (blogContent) {
-        console.log(bordItems);
-    }
+  if (loading) return <div>로딩 중...</div>;
 
-    return (
-        <>
-            <h1>갤러리</h1>
-            <div className="flex flex-col gap-10 my-5">
-            {bordItems.length >0 ? ( 
-                bordItems.map((it, idx)=> (
-                    <div 
-                        key={idx}
-                        className="w-full text-[1rem] border"
-                    >
-                        <div className="flex flex-col gap-3">
-                            <div className="text-[1.2rem]">{it.title}</div>
-                            {it.description.indexOf("<img")!==-1 ? <>
-                            <img 
-                                src={`/api/image-proxy?url=${encodeURIComponent(it.description.split('src="')[1].split('"')[0].trim().replace('blogthumb', 'postfiles')+"?type=w966")}`}
-                                alt="블로그 이미지"
-                                // className="object-contain w-full"
-                                // className="aspect-auto h-[20rem]"
-                                />
-                            <div>{it.description.split('<img')[0]}</div>
-                            {/*
-                            ---이미지 비율 이상함
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-5">갤러리</h1>
 
-                            https://blogthumb.pstatic.net/MjAxOTA1MDlfMjUz/MDAxNTU3NDA4Nzc1ODU0.a-izj2xFy4Tn5lgRYYuSGmTCCWlawQy5ToD92hof2iUg.tZR68GMtpAXPzQ36ncFVQx_td8qPfoBYAuDlBSBN8aYg.JPEG.gbhyang/경인_평화22.jpg
-                            에서 blogthumb를 postfiles로 대치, 
-                            맨 뒤에 ?type=w966 붙이기
+      {posts.length > 0 ? (
+        <div className="flex flex-col gap-10 my-5">
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/gallery/${post.id}`}
+              className="border border-gray-600 p-4 rounded-lg hover:bg-gray-800"
+            >
+              <div className="text-xl font-medium mb-3">{post.title}</div>
 
-                            url.replace('blogthumb', 'postfiles')
-                            url 뒷부분 파라미터 추가
+              {/* 첫 번째 이미지만 미리보기 */}
+              {post.images && post.images.length > 0 && (
+                <img
+                  src={post.images[0]}
+                  alt={post.title}
+                  className="w-full h-64 object-cover rounded mb-3"
+                />
+              )}
 
-
-                            ---화면 밑에 부분 하얗게 뜨는 거 */}
-
-                            </>: null }
-                        </div>
-                    </div>
-            ))) : <div>정보를 불러올 수 없습니다.</div> 
-        }
+              {/* 내용 미리보기 (100자) */}
+              <p className="text-gray-400 line-clamp-3">
+                {post.content.substring(0, 100)}...
+              </p>
+            </Link>
+          ))}
         </div>
-        </>
-    )
+      ) : (
+        <div className="text-center text-gray-400 py-10">목록이 없습니다.</div>
+      )}
+    </div>
+  );
 }
