@@ -5,7 +5,7 @@ import { db } from "@/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
-export default function NoticeDetail({ params }) {
+export default function AboutDetail({ params }) {
   const { id } = params;
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,9 +37,7 @@ export default function NoticeDetail({ params }) {
         ← 뒤로가기
       </button>
 
-      <div className="bg-[#3e3e3e] px-5 py-2 text-lg rounded-md mb-5 inline-block">
-        {post.title}
-      </div>
+      <h1 className="text-3xl font-bold mb-5">{post.title}</h1>
 
       <div className="whitespace-pre-wrap mb-8">{post.content}</div>
 
