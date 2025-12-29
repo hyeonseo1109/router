@@ -2,58 +2,67 @@
 
 import { useEffect, useState } from "react";
 import { db } from "@/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { useRouter } from "next/navigation";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import Link from "next/link";
 
-export default function NoticeDetail({ params }) {
-  const { id } = params;
-  const [post, setPost] = useState(null);
+export default function About() {
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
-    fetchPost();
-  }, [id]);
+    fetchPosts();
+  }, []);
 
-  const fetchPost = async () => {
-    const docRef = doc(db, "posts", id);
-    const docSnap = await getDoc(docRef);
+  const fetchPosts = async () => {
+    const q = query(collection(db, "posts"), where("category", "==", "intro"));
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-    if (docSnap.exists()) {
-      setPost({ id: docSnap.id, ...docSnap.data() });
-    }
+    // 최신순 정렬
+    data.sort((a, b) => {
+      if (!a.createdAt || !b.createdAt) return 0;
+      return b.createdAt.seconds - a.createdAt.seconds;
+    });
+
+    setPosts(data);
     setLoading(false);
   };
 
   if (loading) return <div>로딩 중...</div>;
-  if (!post) return <div>글을 찾을 수 없습니다.</div>;
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <button
-        onClick={() => router.back()}
-        className="mb-5 text-gray-400 hover:text-white"
-      >
-        ← 뒤로가기
-      </button>
+    <div>
+      <h1 className="text-2xl font-bold mb-5">공방소개</h1>
 
-      <div className="bg-[#3e3e3e] px-5 py-2 text-lg rounded-md mb-5 inline-block">
-        {post.title}
-      </div>
+      {posts.length > 0 ? (
+        <div className="flex flex-col gap-10 my-5">
+          {posts.map((post) => (
+            <Link
+              key={post.id}
+              href={`/about/${post.id}`}
+              className="border border-gray-600 p-4 rounded-lg hover:bg-gray-800"
+            >
+              <div className="text-xl font-medium mb-3">{post.title}</div>
 
-      <div className="whitespace-pre-wrap mb-8">{post.content}</div>
+              {post.images && post.images.length > 0 && (
+                <img
+                  src={post.images[0]}
+                  alt={post.title}
+                  className="w-full h-64 object-cover rounded mb-3"
+                />
+              )}
 
-      {post.images && post.images.length > 0 && (
-        <div className="flex flex-col gap-4">
-          {post.images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={`이미지 ${idx + 1}`}
-              className="w-full rounded"
-            />
+              <p className="text-gray-400 line-clamp-3">
+                {post.content.substring(0, 100)}...
+              </p>
+            </Link>
           ))}
         </div>
+      ) : (
+        <div className="text-center text-gray-400 py-10">목록이 없습니다.</div>
       )}
     </div>
   );
