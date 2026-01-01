@@ -30,8 +30,8 @@ export default function NavBar() {
           <Link href="/about" className="max930:hidden">
             공방소개
           </Link>
-          <Link href="/lamp" className="max930:hidden">
-            한지조명
+          <Link href="/shop/lamp" className="max930:hidden">
+            제품 소개
           </Link>
           <Link href="/student" className="max930:hidden">
             수강생모집

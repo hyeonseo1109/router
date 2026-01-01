@@ -37,7 +37,7 @@ export default function MenuBar() {
               <div className="flex flex-col w-full items-center gap-5">
                 <div className="bg-[#3f3f7d] w-full h-0.5"></div>
                 <Link href="/about">공방소개</Link>
-                <Link href="/lamp">한지조명</Link>
+                <Link href="/shop/lamp">제품 소개</Link>
                 <Link href="/student">수강생모집</Link>
                 <Link href="/gallery">갤러리</Link>
                 <Link href="/notice">소식</Link>
