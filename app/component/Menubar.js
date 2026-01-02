@@ -8,6 +8,12 @@ export default function MenuBar() {
   const menuBar = useMenuBar((state) => state.menuBar);
   const setMenuBar = useMenuBar((state) => state.setMenuBar);
   const isLogined = useAuthStore((s) => s.isLogined);
+  const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
+
+  // 어드민 여부 확인 (환경변수에서 이메일 목록 가져오기)
+  const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
+  const isAdmin = user && adminEmails.includes(user.email);
 
   return (
     <>
@@ -24,25 +30,72 @@ export default function MenuBar() {
                 <div className="text-[1.2rem] font-bold">한지공방 한지향</div>
                 {isLogined ? (
                   <>
-                    <Link href="/mypage">마이페이지</Link>
-                    <button>로그아웃</button>
+                    <Link href="/mypage" onClick={() => setMenuBar(false)}>
+                      마이페이지
+                    </Link>
+                    {isAdmin && (
+                      <>
+                        <Link
+                          href="/admin/dashboard"
+                          onClick={() => setMenuBar(false)}
+                        >
+                          글 목록
+                        </Link>
+                        <Link
+                          href="/admin/write"
+                          onClick={() => setMenuBar(false)}
+                        >
+                          글쓰기
+                        </Link>
+                        <Link
+                          href="/admin/write-product"
+                          onClick={() => setMenuBar(false)}
+                        >
+                          상품등록
+                        </Link>
+                      </>
+                    )}
+                    <button
+                      onClick={() => {
+                        logout();
+                        setMenuBar(false);
+                      }}
+                    >
+                      로그아웃
+                    </button>
                   </>
                 ) : (
                   <div className="flex flex-col items-center gap-5">
-                    <Link href="/signin">로그인</Link>
-                    <Link href="/signup">회원가입</Link>
+                    <Link href="/signin" onClick={() => setMenuBar(false)}>
+                      로그인
+                    </Link>
+                    <Link href="/signup" onClick={() => setMenuBar(false)}>
+                      회원가입
+                    </Link>
                   </div>
                 )}
               </div>
+
               <div className="flex flex-col w-full items-center gap-5">
                 <div className="bg-[#3f3f7d] w-full h-0.5"></div>
-                <Link href="/about">공방소개</Link>
-                <Link href="/shop/lamp">제품 소개</Link>
-                <Link href="/student">수강생모집</Link>
-                <Link href="/gallery">갤러리</Link>
-                <Link href="/notice">소식</Link>
+                <Link href="/about" onClick={() => setMenuBar(false)}>
+                  공방소개
+                </Link>
+                <Link href="/lamp" onClick={() => setMenuBar(false)}>
+                  한지조명
+                </Link>
+                <Link href="/student" onClick={() => setMenuBar(false)}>
+                  수강생모집
+                </Link>
+                <Link href="/gallery" onClick={() => setMenuBar(false)}>
+                  갤러리
+                </Link>
+                <Link href="/notice" onClick={() => setMenuBar(false)}>
+                  소식
+                </Link>
               </div>
             </div>
+
             <div className="flex flex-col w-full items-center gap-5">
               <a
                 href="https://blog.naver.com/gbhyang"
