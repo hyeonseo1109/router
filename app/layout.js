@@ -9,9 +9,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko" className="background">
-      <body className="flex flex-col gap-2">
+      <body className="flex flex-col h-screen overflow-hidden">
         <NavBar />
-        <div className="bg-[#000] mx-5 p-3 rounded-lg">{children}</div>
+        <div className="bg-[#000] mx-5 mb-5 rounded-lg flex-1 overflow-y-auto custom-scrollbar">
+          <div className="p-3">{children}</div>
+        </div>
       </body>
     </html>
   );
