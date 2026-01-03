@@ -7,14 +7,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="ko" className="background">
       <body className="flex flex-col gap-2">
         <NavBar />
-        <div className="bg-[#000] mx-5 p-3 rounded-lg">
-          {children}
-        </div>
+        <div className="bg-[#000] mx-5 p-3 rounded-lg">{children}</div>
       </body>
     </html>
   );
