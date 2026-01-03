@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { auth } from "@/firebase";
 import { XMLParser } from "fast-xml-parser";
@@ -43,7 +43,6 @@ export const useAuthStore = create((set) => ({
     try {
       await signOut(auth);
       set({ user: null, isLogined: false, signupError: null });
-      console.log("로그아웃");
     } catch (e) {
       console.error("로그아웃 실패:", e);
       set({ signupError: e.message });
@@ -62,13 +61,12 @@ export function useAuthListener() {
   }, [setUser]);
 }
 
-
-export const useBlog = create((set)=> ({
+export const useBlog = create((set) => ({
   blogContent: [],
-  setBlogContent: (blogContent)=>set({blogContent}),
+  setBlogContent: (blogContent) => set({ blogContent }),
   fetchBlogContent: async () => {
     const res = await fetch("/api/blog");
-    const data = await res.json(); 
+    const data = await res.json();
     set({ blogContent: data });
-  }
-}))
+  },
+}));
