@@ -16,14 +16,33 @@ body {
   padding: 0;
 }
 
+/* 커스텀 스크롤바 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #3a3a3a;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0a0a0a;
+}
+
 .swiper-scrollbar {
   height: 0.6em !important;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 1.5em !important; /* 아이콘 크기 */
-  color: rgba(0, 0, 0, 0.525) !important; /* 색상 변경 */
+  font-size: 1.5em !important;
+  color: rgba(0, 0, 0, 0.525) !important;
 }
 
 .background {
@@ -36,20 +55,12 @@ body {
   left: 0;
 }
 
-/* .section {
-  width: 100%;
-} */
-
 nav {
   width: 20%;
-  /* height: 100%; */
 }
 
 @media (max-width: 930px) {
   section {
     flex-direction: column;
   }
-  /* .swiperImage {
-    font-size: 17px;
-  } */
 }
