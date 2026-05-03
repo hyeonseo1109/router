@@ -11,7 +11,8 @@ export default function RootLayout({ children }) {
     <html lang="ko" className="background">
       <body className="flex flex-col h-screen overflow-hidden">
         <NavBar />
-        <div className="bg-[#000] mx-5 mb-5 rounded-lg flex-1 overflow-y-auto custom-scrollbar">
+        {/* 배경 박스 */}
+        <div className="bg-[#e6dfc7] mx-5 mb-5 rounded-lg flex-1 overflow-y-auto custom-scrollbar">
           <div className="p-3">{children}</div>
         </div>
       </body>

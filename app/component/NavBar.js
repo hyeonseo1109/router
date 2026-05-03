@@ -23,7 +23,8 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="flex justify-between bg-[#1c1c2b] my-5 rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
+      {/* 내브바  */}
+      <nav className="flex justify-between bg-[#bbae7c] my-5 rounded-lg mx-5 h-[3rem] w-auto items-center p-3 text-white text-[0.9rem]">
         <div className="flex gap-6 items-center">
           <Link href="/" className="text-[1.2rem]">
             한지공방 한지향

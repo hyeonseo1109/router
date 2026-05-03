@@ -46,7 +46,9 @@ body {
 }
 
 .background {
-  background: linear-gradient(45deg, rgb(29, 29, 123), rgb(96, 96, 86));
+  /* 배경색 */
+  background: linear-gradient(45deg, #c9bd8d, #e0d6ac);
+  /* background: linear-gradient(45deg, rgb(29, 29, 123), rgb(96, 96, 86)); */
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

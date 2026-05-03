@@ -24,7 +24,6 @@ export default function AdminLogin() {
       const user = userCredential.user;
       setUser(user);
       setLoginError(null);
-      console.log("관리자 로그인 성공:", user.email);
       router.push("/admin/dashboard");
     } catch (error) {
       setLoginError(error.code);
