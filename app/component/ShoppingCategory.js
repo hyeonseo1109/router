@@ -17,28 +17,28 @@ export default function ShoppingCategory() {
             <Link href="/shop/hanjiProduct" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">한지공예 완제품</p>
             </Link>
             <Link href="/shop/halfProduct" className="flex items-center gap-2">
               <img
                 src="/images/purple.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">반제품 (골격)</p>
             </Link>
             <Link href="/shop/hanji" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">전통 한지</p>
             </Link>
             <Link href="/shop/boo" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">부자재</p>
             </Link>
@@ -47,21 +47,21 @@ export default function ShoppingCategory() {
             <Link href="/shop/lamp" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">한지 조명</p>
             </Link>
             <Link href="/shop/diy" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">만들기 세트 (DIY)</p>
             </Link>
             <Link href="/shop/jangsuk" className="flex items-center gap-2">
               <img
                 src="/images/blue.png"
-                className="bg-[gray] w-[5rem] h-[3rem]"
+                className="bg-[gray] w-[5rem] h-[3rem] object-cover shrink-0"
               ></img>
               <p className="text-white text-[0.8rem]">장석</p>
             </Link>
