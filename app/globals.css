@@ -66,3 +66,9 @@ nav {
     flex-direction: column;
   }
 }
+@media (max-width: 500px) {
+  body {
+    flex-direction: column;
+    font-size: 15px;
+  }
+}
