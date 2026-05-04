@@ -11,24 +11,26 @@ export default function MyPage() {
   return (
     <>
       <div>마이페이지</div>
-      <div className="flex flex-col items-center gap-10">
-        {user?.photoURL ? (
-          <img
-            src={user.photoURL}
-            className="w-[10rem] h-[10rem] rounded-full"
-          />
-        ) : (
-          <VscAccount size={64} />
-        )}
-        {user ? (
-          user.displayName ? (
-            <span>{user.displayName}님, 환영합니다!</span>
+      <div className="bg-[#d4ccae] mt-7 aspect-[2/1] max-w-[30rem] w-full border rounded-3xl flex items-center justify-center mx-auto">
+        <div className="flex flex-col items-center gap-10">
+          {user?.photoURL ? (
+            <img
+              src={user.photoURL}
+              className="w-[10rem] h-[10rem] rounded-full"
+            />
           ) : (
-            <span>{user.email.split("@")[0]}님, 환영합니다!</span>
-          )
-        ) : (
-          <div>환영합니다!</div>
-        )}
+            <VscAccount size={64} />
+          )}
+          {user ? (
+            user.displayName ? (
+              <span>{user.displayName}님, 환영합니다!</span>
+            ) : (
+              <span>{user.email.split("@")[0]}님, 환영합니다!</span>
+            )
+          ) : (
+            <div>환영합니다!</div>
+          )}
+        </div>
       </div>
     </>
   );
