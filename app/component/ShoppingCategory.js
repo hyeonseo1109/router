@@ -3,7 +3,14 @@ import Link from "next/link";
 export default function ShoppingCategory() {
   return (
     <>
-      <div className="bg-black w-[100%] h-[21rem] flex flex-col">
+      {/* 쇼핑 카테고리 배경 */}
+      <div
+        className="bg-[#d7cca1] w-[100%] h-[21rem] 
+        pb-[1rem]
+      flex flex-col  rounded-lg
+      // aspectRatio-2/1 
+      "
+      >
         <p className="text-white m-2">SHOPPING CATEGORY</p>
         <div className="flex flex-row h-full justify-around mx-5">
           <section className="flex flex-col justify-between">
