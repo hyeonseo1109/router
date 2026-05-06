@@ -20,7 +20,7 @@ export default function SwiperImage() {
   // 데이터가 없으면 "상품 준비중" 메시지 표시
   if (cards.length === 0) {
     return (
-      <div className="w-[30rem] aspect-[2/1] max930:w-auto max1200:w-[25rem] flex items-center justify-center bg-gray-800 rounded-lg">
+      <div className="w-[30rem] aspect-[2/1] max930:w-auto max1200:w-[25rem] flex items-center justify-center bg-[#c3c5a6] rounded-lg">
         <p className="text-gray-400">상품 준비중입니다</p>
       </div>
     );
