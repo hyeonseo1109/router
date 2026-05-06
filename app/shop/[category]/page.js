@@ -31,7 +31,7 @@ export default function ShopCategory({ params }) {
     try {
       const q = query(
         collection(db, "products"),
-        where("category", "==", category)
+        where("category", "==", category),
       );
       const snapshot = await getDocs(q);
       const data = snapshot.docs.map((doc) => ({
@@ -53,7 +53,7 @@ export default function ShopCategory({ params }) {
     }
   };
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <div className="text-[#a2a482]">로딩 중...</div>;
 
   return (
     <div>

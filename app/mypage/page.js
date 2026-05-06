@@ -10,7 +10,7 @@ export default function MyPage() {
 
   return (
     <>
-      <div>마이페이지</div>
+      <div className="text-[#a2a482] font-bold text-2xl">마이페이지</div>
       <div className="bg-[#d4ccae] mt-7 aspect-[2/1] max-w-[30rem] w-full border rounded-3xl flex items-center justify-center mx-auto">
         <div className="flex flex-col items-center gap-10">
           {user?.photoURL ? (

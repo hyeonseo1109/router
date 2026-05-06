@@ -31,11 +31,11 @@ export default function Notice() {
     setLoading(false);
   };
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <div className="text-[#a2a482]">로딩 중...</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-5">소식</h1>
+      <h1 className="text-2xl font-bold mb-5 text-[#a2a482]">소식</h1>
 
       {posts.length > 0 ? (
         <div className="flex flex-col gap-2">

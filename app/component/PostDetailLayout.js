@@ -88,8 +88,9 @@ export default function PostDetailLayout({
     }
   };
 
-  if (loading) return <div>로딩 중...</div>;
-  if (!data) return <div>글을 찾을 수 없습니다.</div>;
+  if (loading) return <div className="text-[#a2a482]">로딩 중...</div>;
+  if (!data)
+    return <div className="text-[#a2a482]">글을 찾을 수 없습니다.</div>;
 
   return (
     <div className="max-w-4xl mx-auto">

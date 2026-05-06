@@ -19,7 +19,7 @@ export default function Gallery() {
     const q = query(
       collection(db, "posts"),
       where("category", "==", "gallery"),
-      orderBy("createdAt", "desc")
+      orderBy("createdAt", "desc"),
     );
     const snapshot = await getDocs(q);
     const data = snapshot.docs.map((doc) => ({
@@ -67,11 +67,11 @@ export default function Gallery() {
     return pages;
   };
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <div className="text-[#a2a482]">로딩 중...</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-5">갤러리</h1>
+      <h1 className="text-2xl font-bold mb-5 text-[#a2a482]">갤러리</h1>
 
       {posts.length > 0 ? (
         <>
@@ -129,7 +129,7 @@ export default function Gallery() {
                   >
                     {page}
                   </button>
-                )
+                ),
               )}
 
               {/* 다음 버튼 */}

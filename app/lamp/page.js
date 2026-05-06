@@ -16,7 +16,7 @@ export default function Lamp() {
   const fetchPosts = async () => {
     const q = query(
       collection(db, "posts"),
-      where("category", "==", "lighting")
+      where("category", "==", "lighting"),
     );
     const snapshot = await getDocs(q);
     const data = snapshot.docs.map((doc) => ({
@@ -33,11 +33,11 @@ export default function Lamp() {
     setLoading(false);
   };
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <div className="text-[#a2a482]">로딩 중...</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-5">한지조명</h1>
+      <h1 className="text-2xl font-bold mb-5 text-[#a2a482]">한지조명</h1>
 
       {posts.length > 0 ? (
         <div className="flex flex-col gap-10 my-5">
