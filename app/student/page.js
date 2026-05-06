@@ -45,7 +45,7 @@ export default function Student() {
             <Link
               key={post.id}
               href={`/student/${post.id}`}
-              className="border border-gray-600 p-4 rounded-lg hover:bg-gray-800"
+              className="border border-gray-600 p-4 rounded-lg bg-[#ecebe3] hover:bg-[#d4d4d4] text-[#a2a482] "
             >
               <div className="text-xl font-medium mb-3">{post.title}</div>
 

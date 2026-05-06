@@ -38,12 +38,12 @@ export default function Notice() {
       <h1 className="text-2xl font-bold mb-5 text-[#a2a482]">소식</h1>
 
       {posts.length > 0 ? (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-10 my-5">
           {posts.map((post) => (
             <Link
               key={post.id}
               href={`/notice/${post.id}`}
-              className="p-3 rounded-md bg-[#282828] hover:bg-[#343434]"
+              className="border bg-[#ecebe3] hover:bg-[#d4d4d4] text-[#a2a482] border-gray-600 p-4 rounded-lg"
             >
               {post.title}
             </Link>
